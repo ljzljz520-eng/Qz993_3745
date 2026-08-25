@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "metrics": {
+    "production_loc": 2363,
+    "production_files": 30,
+    "production_packages": 8,
+    "test_files": 9,
+    "production_functions": 100,
+    "decision_points": 70
+  },
+  "persistence": {
+    "module": "go.etcd.io/bbolt",
+    "entities": ["Record", "User", "Event", "Audit"],
+    "reopen_test": "TestPersistenceSurvivesReopen"
+  },
+  "workflows": [
+    {"steps": ["接收画材登记", "校验名称和数量", "保存到嵌入式存储", "展示实时状态"], "test": "TestWorkflowOne"},
+    {"steps": ["登记库存记录", "审核处理权限", "归档完成记录", "查询审计历史"], "test": "TestWorkflowTwo"},
+    {"steps": ["提交画材", "处理状态转换", "通知操作员", "追踪生命周期事件"], "test": "TestWorkflowThree"}
+  ]
+}
